@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Scaffold</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+        <script src="./vendor/js/require.js"></script>
+        <script>
+            requirejs.config({ baseUrl: './js', paths: {
+                    'underscore': '../vender/lodash.min',
+                    'bootstrap': '../bootstrap/js/bootstrap',
+                    'pager': '../vendor/js/pager',
+                    'knockout': '../vendor/js/knockout-2.2.1',
+                    'jquery': '../vendor/js/jquery.min-2.0.2'
+                },
+                shim: {
+                    'bootstrap': ['jquery']
+                }
+            });
+        </script>
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        <script>
+            require(['appViewModel']);
+        </script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="#">Scaffold</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li data-bind="css: {active: $__page__.find('main').isVisible}"><a data-bind="attr: {href: currentTab}">Home</a></li>
+                            <li data-bind="css: {active: $__page__.find('about').isVisible}"><a href="#about">About</a></li>
+                            <li data-bind="css: {active: $__page__.find('contact').isVisible}"><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div data-bind="page: {id: 'main', role: 'start'}">
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs" data-bind="foreach: $page.children">
+                        <li data-bind="css: {active: isVisible}"><a data-bind="text: $data.val('title'), page-href: $data"></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" data-bind="page: {id: 'A', title: 'testA'}">
+                            <p>I'm in Section <strong data-bind="text: $page.val('id')"></strong>.</p>
+                        </div>
+                        <div class="tab-pane" data-bind="page: {id: 'C', title: 'testC'}">
+                            <p>I'm in Section <strong data-bind="text: $page.val('id')"></strong>.</p>
+                            <p>First name: <strong data-bind="text: firstName"></strong></p>
+                        </div>
+                        <div class="tab-pane" data-bind="page: {id: 'B', title: 'testB', role:'start'}">
+                            <p>I'm in Section <strong data-bind="text: $page.val('id')"></strong>.</p>
+                            <p>First name: <input data-bind="value: firstName" /></p>
+                            <p>First name capitalized: <strong data-bind="text: firstNameCaps"></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /page: main -->
+            <div data-bind="page: {id: 'about'}">
+                About Me
+            </div>
+            <div data-bind="page: {id: 'contact'}">
+                Contact
+            </div>
+
+        </div> <!-- /container -->
+    </body>
+</html>
