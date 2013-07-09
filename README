@@ -1,0 +1,9 @@
+The start of a scaffold for building spa.
+
+Using:
+Bootstrap
+Require.js
+Knockout.js
+Pager.js
+jQuery
+lodash
