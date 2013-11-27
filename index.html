@@ -29,22 +29,23 @@
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="#">Scaffold</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li data-bind="css: {active: $__page__.find('main').isVisible}"><a data-bind="attr: {href: currentTab}">Home</a></li>
-                            <li data-bind="css: {active: $__page__.find('about').isVisible}"><a href="#about">About</a></li>
-                            <li data-bind="css: {active: $__page__.find('contact').isVisible}"><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+                    <a class="navbar-brand" href="#">Scaffold</a>
                 </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li data-bind="css: {active: $__page__.find('main').isVisible}"><a data-bind="attr: {href: currentTab}">Home</a></li>
+                        <li data-bind="css: {active: $__page__.find('about').isVisible}"><a href="#about">About</a></li>
+                        <li data-bind="css: {active: $__page__.find('contact').isVisible}"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
         </div>
 
